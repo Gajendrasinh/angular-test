@@ -1,0 +1,39 @@
+<div class="row">
+    <div class="col-md-8 col-lg-8 mx-auto">
+        <div class="card">
+            <div class="card-header">
+                <h3>Angular Reactive Form</h3>
+            </div>
+            <div class="card-body">
+                <form class="form" [formGroup]="registerForm" (ngSubmit)="onSubmit()">
+                    
+                    <div class="form-group">
+                        <label>Random Text </label>
+                        <textarea class="form-control" formControlName="text_random" rows="3"></textarea>
+                        <span class="text-danger"
+                            *ngIf="(registerForm.controls['text_random'].touched || submitted) && registerForm.controls['text_random'].errors?.required">
+                            Random Text is required
+                        </span>
+                        <span *ngIf="!((registerForm.controls['text_random'].touched || submitted) && registerForm.controls['text_random'].errors?.required)" class="text-dark"> 
+                            The character count is {{registerForm.controls['text_random'].value.length+'/300'}}
+                        </span>
+                    </div>
+
+                    <div class="form-group mt-2 mb-2">
+                        <label>API URL</label>
+                        <input type="text" class="form-control" formControlName="api_url">
+                        <span class="text-danger"
+                            *ngIf="(registerForm.controls['api_url'].touched || submitted) && registerForm.controls['api_url'].errors?.required">
+                            api url is required
+                        </span>
+                    </div>
+
+                    <div class="form-group mt-2">
+                        <button type="submit" class="btn btn-success">Submit</button>
+                    </div>
+
+                </form>
+            </div>
+        </div>
+    </div>
+</div>
